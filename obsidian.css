@@ -1488,16 +1488,19 @@ div.search-result-container
                 var(--scale-8-3);
 }
 
+/* 删除 nav-file-title 的 padding 过渡动画 */
 .nav-file-title {
-    padding:    var(--scale-0-0)
-                var(--scale-0-0)
-                var(--scale-0-0)
-                var(--scale-2-4);
-    transition: padding
-                var(--duration-fast-2)
-                var(--motion-smooth);
+    padding: var(--scale-0-0)
+            var(--scale-0-0)
+            var(--scale-0-0)
+            var(--scale-2-4);
 }
 
+/* 确保文件夹子项的缩进是固定的 */
+.nav-folder-children .nav-folder-children {
+    padding-left: 0;
+    margin-left: var(--scale-8-2) !important; /* 添加 !important 确保样式不被覆盖 */
+}
 .nav-file-title, .nav-folder-title {
     width: auto;
     text-overflow: unset;
@@ -1583,7 +1586,7 @@ div.search-result-container
             Status Bar
 ────────────────────────────────────*/
 
-.status-bar {
+/* .status-bar {
     max-height: unset;
     min-width: 100%;
     display: flex;
@@ -1593,10 +1596,22 @@ div.search-result-container
     bottom: 0;
     padding:    var(--scale-2-1)
                 var(--scale-2-4)
-                var(--scale-0-0)
+                var(--scale-2-1)
                 var(--scale-2-4);
-}
+} */
 
+.status-bar {
+    --bar-vertical-padding: 5px;
+    --bar-height: calc(22px + (var(--bar-vertical-padding)));
+    line-height: 1;
+    height: var(--bar-height);
+    max-height: var(--bar-height);
+    min-height: var(--bar-height);
+    overflow: hidden;
+    color: var(--status-bar-text-color);
+    border-top: 1px solid var(--panel-border-color);
+    background-color: var(--status-bar-bg);
+  }
 
 .status-bar-item {
     font-family: var(--default-font);
